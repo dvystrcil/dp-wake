@@ -1,0 +1,15 @@
+[Unit]
+Description=Wake DisplayPort connectors after cold boot / resume
+Documentation=https://github.com/dvystrcil/dp-wake
+After=systemd-modules-load.service graphical.target
+Wants=graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/dp-wake.sh
+RemainAfterExit=no
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=graphical.target

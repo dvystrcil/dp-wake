@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# systemd-suspend hook: re-poke DP connectors after resume.
+# Installed to /lib/systemd/system-sleep/dp-wake-resume.
+#
+# systemd calls system-sleep scripts with two arguments:
+#   $1 = "pre" | "post"  (before suspend / after resume)
+#   $2 = "suspend" | "hibernate" | "hybrid-sleep" | "suspend-then-hibernate"
+
+case "$1/$2" in
+  post/*)
+    /usr/local/bin/dp-wake.sh || true
+    ;;
+esac
