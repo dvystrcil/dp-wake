@@ -148,4 +148,4 @@ dmesg -w
 
 ## License
 
-MIT.
+[MIT](LICENSE)
